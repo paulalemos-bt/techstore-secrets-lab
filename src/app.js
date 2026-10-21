@@ -1,17 +1,23 @@
+const express = require("express");
+const database = require("./database");
+require("dotenv").config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.get("/health", (req, res) => {
     res.json({
         status: "healthy",
-        database: database.host
+        
     });
 });
 
 
 app.get("/config-check", (req, res) => {
     res.json({
-        database: database.database,
-        adminConfigured: Boolean(senhaUsuarioTeste123),
-        paymentConfigured: Boolean(chaveAPI111222333444555777888999000),
-        internalApiConfigured: Boolean(tokenInterno1234567890),
+        databaseConfigured: Bolean(process.env.DB_HOST),
+        adminConfigured: Boolean(process.env.DB_PASSWORD),
+        paymentConfigured: Boolean(process.env.PAYMENT_API_KEY),        
     });
 });
 
