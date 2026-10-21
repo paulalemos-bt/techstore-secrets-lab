@@ -1,14 +1,17 @@
+const config = require("./config");
+const dbConfig = config.getDatabaseConfig();
+
 const connection= {
-    host: database.host,
-    port: database.port,
-    database: database.database,
-    username: "root",
-    password: database.password
+    host: dbConfig.host,
+    port: dbConfig.port,
+    database: dbConfig.database,
+    username: dbConfig.username,
+    password: dbConfig.password
 };
 
 function connect() {
     console.log(
-        `conectando ao banco $(connection.database) como $(connection.username)...`
+        `Conectando ao banco ${connection.database} com o usuário ${connection.username}...`
     );
 
     return connection;
